@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM centos/devtoolset-7-toolchain-centos7
 
 USER root
 
