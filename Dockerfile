@@ -4,15 +4,14 @@ USER root
 
 WORKDIR /root
 
-RUN yum update -y && yum install -y wget git gcc-c++ cmake make bzip2-devel && \
+RUN yum update -y -q && yum install -y -q wget git gcc-c++ cmake make bzip2-devel && \
     wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
-    chmod +x Miniconda3-latest-Linux-x86_64.sh && ./Miniconda3-latest-Linux-x86_64.sh -b && \
+    chmod +x Miniconda3-latest-Linux-x86_64.sh && ./Miniconda3-latest-Linux-x86_64.sh -b -p ./miniconda3 && \
     rm Miniconda3-latest-Linux-x86_64.sh && \
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 ENV PATH "$PATH:./miniconda3/bin/"
 
-RUN echo ". ./miniconda3/etc/profile.d/conda.sh" >> ~/.profile && \
-    conda init bash
+RUN echo ". ./miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 
 CMD ["/bin/bash"]
