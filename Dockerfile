@@ -10,6 +10,7 @@ RUN yum update -y -q && yum install -y -q wget git cmake make bzip2-devel && \
     ln -s `find /usr/lib64/ -type f -name "libbz2.so.1*"` /usr/lib64/libbz2.so.1.0
 
 RUN echo ". $HOME/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc &&  \
+    echo "source $HOME/.poetry/env" >> ~/.bashrc && \
     source ~/.bashrc && conda init bash
 
 CMD ["/bin/bash"]
