@@ -2,7 +2,7 @@ FROM centos/devtoolset-4-toolchain-centos7
 
 USER root
 
-RUN yum update -y -q && yum install -y -q wget git cmake make bzip2-devel && \
+RUN yum update -y -q && yum install -y -q wget git cmake make bzip2-devel libsndfile sox && \
     wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
     chmod +x Miniconda3-latest-Linux-x86_64.sh && ./Miniconda3-latest-Linux-x86_64.sh -b && \
     rm Miniconda3-latest-Linux-x86_64.sh && \
